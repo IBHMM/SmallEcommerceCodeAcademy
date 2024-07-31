@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { NavbarContext } from '../../context/navbar';
 import { LikedContext } from '../../context/liked';
+import { AuthenticationContext } from '../../context/authentication';
 
 const Navbar: React.FC = () => {
   const {products} = useContext(LikedContext);
+  const {user} = useContext(AuthenticationContext);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [number, setNumber] = useState<Number>(0);
@@ -14,9 +16,16 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  console.log(user)
+
   useEffect(() => {
     setNumber(products.length)
   }, [products])
+  
+  const handlelogout = () => {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
 
   const navbar = useContext(NavbarContext);
 
@@ -25,7 +34,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="text-2xl font-bold text-gray-800">
-            <Link to="/">BrandName</Link>
+            <Link to="/home">BrandName</Link>
           </div>
           <div className="hidden md:flex space-x-8">
             <Link
@@ -52,6 +61,15 @@ const Navbar: React.FC = () => {
                 </p>
             }
             </Link>
+
+            <p>
+              {user}
+            </p>
+
+            <p className='w-[90px] h-[40px] rounded-[10px] z-100 text-white bg-red-500 cursor-pointer flex items-center justify-center' onClick={handlelogout}>
+                Log out
+            </p>
+
           </div>
           <div className="md:hidden">
             <button

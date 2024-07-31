@@ -1,17 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
 import { Home } from './page/Home';
 import { Products } from './page/Products';
 import { NotFound } from './page/NotFound';
 import { Linked } from './page/Liked';
+import { Signin } from './page/Signin';
+import { Checkauth } from './loaders/Authentication';
+import { Authentication } from './actions/Authenticate';
 
 const router = createBrowserRouter([
     {
-        path: '/',
-        element: <Home />,
-    },
-    {
         path: 'home',
+        loader: Checkauth,
         element: <Home />,
     },
     {
@@ -21,6 +20,12 @@ const router = createBrowserRouter([
     {
         path: 'liked',
         element: <Linked />,
+    },
+    {
+        path: '/signin',
+        loader: Checkauth,
+        action: Authentication,
+        element: <Signin />,
     },
     {
         path: '*',
