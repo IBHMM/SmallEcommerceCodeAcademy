@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="hidden md:flex space-x-8">
             <Link
-              to="/"
+              to="/home"
               className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "home" ? "text-orange-500" : "text-gray-800"} `}
             >
               Home
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden flex flex-col w-full items-cente justify-center gap-[20px] text-[20px]">
           <Link
-            to="/"
+            to="/home"
             className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "home" ? "text-orange-500" : "text-gray-800"} `}
             onClick={toggleMenu}
           >
@@ -125,6 +125,15 @@ const Navbar: React.FC = () => {
               </p>
             }
           </Link>
+
+          
+          <p>
+              {user}
+            </p>
+
+            <p className='w-[90px] h-[40px] rounded-[10px] z-100 text-white bg-red-500 cursor-pointer flex items-center justify-center' onClick={handlelogout}>
+                Log out
+            </p>
         </div>
       )}
     </nav>
