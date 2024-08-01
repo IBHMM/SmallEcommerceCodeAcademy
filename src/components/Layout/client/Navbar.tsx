@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { NavbarContext } from '../../context/navbar';
-import { LikedContext } from '../../context/liked';
-import { AuthenticationContext } from '../../context/authentication';
+import { NavbarContext } from '../../../context/navbar';
+import { LikedContext } from '../../../context/liked';
+import { AuthenticationContext } from '../../../context/authentication';
 
-const Navbar: React.FC = () => {
+const NavbarClient: React.FC = () => {
   const {products} = useContext(LikedContext);
   const {user} = useContext(AuthenticationContext);
 
@@ -15,8 +15,6 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  console.log(user)
 
   useEffect(() => {
     setNumber(products.length)
@@ -140,4 +138,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default NavbarClient;

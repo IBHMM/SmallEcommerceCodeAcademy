@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { CardProps } from '../types/types';
 import { LikedContext } from '../context/liked';
+import { Link } from 'react-router-dom';
 
 export function Card({ product }: CardProps) {
   const [liked, setLiked] = useState(false);
@@ -23,8 +24,10 @@ export function Card({ product }: CardProps) {
   }; 
 
   return (
-    <div className="w-[400px] h-[500px] rounded overflow-hidden shadow-lg m-4 relative">
-      <img className="w-full h-[300px]" src={product?.image && product.image} alt={product && product.title} />
+    <Link to={`/product/${product?.id}`} className="w-[350px] h-[400px] rounded overflow-hidden shadow-lg m-4 relative items-center justify-center gap-10">
+      <div className='flex items-center justify-center w-full'>
+        <img className="w-[50%] h-[200px]" src={product?.image && product.image} alt={product && product.title} />
+      </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{product && product.title}</div>
       </div>
@@ -46,7 +49,7 @@ export function Card({ product }: CardProps) {
           {liked ? 'Liked' : 'Like'}
         </button>
       </div>
-    </div>
+    </Link>
   );
 }
 

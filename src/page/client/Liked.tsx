@@ -1,9 +1,8 @@
-import Navbar from "../components/Layout/Navbar";
-import { LikedMain } from "../components/LikedMain";
+import { LikedMain } from "../../components/LikedMain";
 import { useContext, useEffect } from "react";
-import { NavbarContext } from "../context/navbar";
+import { NavbarContext } from "../../context/navbar";
 
-export function Linked() {
+export function Liked() {
 
     const navbar = useContext(NavbarContext);
 
@@ -13,7 +12,6 @@ export function Linked() {
 
     return (
         <>
-           <Navbar />
            <LikedMain />
         </>
     )

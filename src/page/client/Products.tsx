@@ -1,7 +1,6 @@
-import Navbar from "../components/Layout/Navbar";
-import { ProductsMain } from "../components/Products";
+import { ProductsMain } from "../../components/Products";
 import { useContext, useEffect } from "react";
-import { NavbarContext } from "../context/navbar";
+import { NavbarContext } from "../../context/navbar";
 
 export function Products() {
 
@@ -14,7 +13,6 @@ export function Products() {
 
     return (
         <>
-            <Navbar />
             <ProductsMain />
         </>
     )
