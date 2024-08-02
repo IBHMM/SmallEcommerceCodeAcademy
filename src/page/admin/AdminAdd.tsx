@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CardProps } from "../../types/types";
+import { AdminNavbarContext } from "../../context/adminnavbar";
 
 
 export function AdminAdd() {
@@ -8,9 +9,14 @@ export function AdminAdd() {
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState<any>("");
-    const [sortConfig, setSortConfig] = useState<{ key: keyof CardProps; direction: string } | null>(null);
-
-    const [products, setProducts] = useState([])
+    const [sortConfig, setSortConfig] = useState<{ key: keyof CardProps; direction: string } | null>(null);  
+    
+    const [products, setProducts] = useState([]);
+    
+    const navbar = useContext(AdminNavbarContext);
+    useEffect(() => {
+        navbar.setActiveDirectory("/admin/add")
+    }, []);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

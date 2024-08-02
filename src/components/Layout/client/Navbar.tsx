@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { NavbarContext } from '../../../context/navbar';
 import { LikedContext } from '../../../context/liked';
 import { AuthenticationContext } from '../../../context/authentication';
+import { CardContext } from '../../../context/basket';
 
 const NavbarClient: React.FC = () => {
   const {products} = useContext(LikedContext);
   const {user} = useContext(AuthenticationContext);
+  const card = useContext(CardContext);
+  const navbar = useContext(NavbarContext);
+  const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [number, setNumber] = useState<Number>(0);
@@ -22,10 +26,9 @@ const NavbarClient: React.FC = () => {
   
   const handlelogout = () => {
     localStorage.removeItem('token');
-    window.location.reload();
+    navigate('/signin');
   }
 
-  const navbar = useContext(NavbarContext);
 
   return (
     <nav className="bg-white shadow-md">
@@ -46,6 +49,18 @@ const NavbarClient: React.FC = () => {
               className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "products" ? "text-orange-500" : "text-gray-800"} `}
             >
               Products
+            </Link>
+            <Link
+              to="/card"
+              className={` hover:opacity-20 transition duration-300 relative ${navbar.activeDirectory == "card" ? "text-orange-500" : "text-gray-800"} `}
+            > 
+              {
+                card.products.length !== 0 && 
+                  <p className='bg-red-500 rounded-[50%] flex items-center justify-center text-white absolute top-0 right-[-10px] w-[20px] h-[20px] p-1 text-[12px]'> 
+                      {`${card.products.length}`}
+                  </p>
+              }
+              Card
             </Link>
             <Link
               to="/liked"

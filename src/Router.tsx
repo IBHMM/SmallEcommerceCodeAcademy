@@ -13,6 +13,7 @@ import { AdminProducts } from './page/admin/AdminProducts';
 import { AdminAdd } from './page/admin/AdminAdd';
 import Dashboard from './components/admin/DashBoard';
 import { SigninAdmin } from './page/admin/Signin';
+import { Card } from './page/client/Card';
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
                 path: 'product/:productID',
                 loader: Checkauth,
                 element: <CardOpened />,
+            },
+            {
+                path: 'card',
+                loader: Checkauth,
+                element: <Card />,
             },
         ],
     },

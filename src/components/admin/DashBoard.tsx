@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AdminNavbarContext } from '../../context/adminnavbar';
 
 const Dashboard: React.FC = () => {
 
@@ -10,6 +11,10 @@ const Dashboard: React.FC = () => {
         navigate('/admin/signin', {replace: true})
     }
 
+    const navbar = useContext(AdminNavbarContext);
+    useEffect(() => {
+        navbar.setActiveDirectory("/admin/dashboard")
+    }, [])
 
     return (
         <div className="flex h-screen bg-gray-100">

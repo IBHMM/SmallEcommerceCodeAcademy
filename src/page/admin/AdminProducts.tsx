@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CardProps } from "../../types/types";
 import { TopUp } from "../../components/admin/TopUp";
 import { EditProducts } from "../../components/admin/EditProduct";
+import { AdminNavbarContext } from "../../context/adminnavbar";
 
 export function AdminProducts() {
     const [products, setProducts] = useState<CardProps[]>([]);
@@ -16,6 +17,11 @@ export function AdminProducts() {
             .then((response) => response.json())
             .then((data) => setProducts(data));
     }, []);
+
+    const navbar = useContext(AdminNavbarContext);
+    useEffect(() => {
+        navbar.setActiveDirectory("/admin/products")
+    }, [])
 
     const sortBy = (key: keyof CardProps) => {
         let direction = 'ascending';

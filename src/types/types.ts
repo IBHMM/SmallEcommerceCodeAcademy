@@ -16,4 +16,8 @@ export type Products = {
   product: CardProps;
 };
 
+export type Card ={
+  product: Array<CardProps>;
+}
+
 

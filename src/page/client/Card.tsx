@@ -1,21 +1,18 @@
-import { ProductsMain } from "../../components/Products";
+import { CardMain } from "../../components/BasketMain";
 import { useContext, useEffect } from "react";
 import { NavbarContext } from "../../context/navbar";
 
-export function Products() {
+export function Card() {
 
     const navbar = useContext(NavbarContext);
 
     useEffect(() => {
-        navbar.setActiveDirectory("products");
+        navbar.setActiveDirectory("card");
     }, []);
-
-
-
 
     return (
         <>
-            <ProductsMain />
+           <CardMain />
         </>
     )
 }

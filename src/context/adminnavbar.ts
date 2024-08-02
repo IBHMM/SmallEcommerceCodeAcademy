@@ -6,7 +6,7 @@ interface NavbarContextProps {
 }
 
 const AdminNavbarContext = createContext<NavbarContextProps>({
-  activeDirectory: 'home',
+  activeDirectory: '/admin/dashboard',
   setActiveDirectory: () => {},
 });
 

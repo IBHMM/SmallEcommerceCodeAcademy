@@ -23,19 +23,19 @@ const NavbarAdmin: React.FC = () => {
           <div className="hidden md:flex space-x-8">
             <Link
               to="/admin/dashboard"
-              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "home" ? "text-orange-500" : "text-white"} `}
+              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "/admin/dashboard" ? "text-black" : "text-white"} `}
             >
               DashBoard
             </Link>
             <Link
               to="/admin/products"
-              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "products" ? "text-orange-500" : "text-white"} `}
+              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "/admin/products" ? "text-black" : "text-white"} `}
             >
               Products
             </Link>
             <Link
               to="/admin/add"
-              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "liked" ? "text-orange-500" : "text-white"} relative `}
+              className={` hover:opacity-20 transition duration-300 ${navbar.activeDirectory == "/admin/add" ? "text-black" : "text-white"} relative `}
             >
               Add         
             </Link>

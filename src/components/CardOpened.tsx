@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { CardContext } from '../context/basket';
 
 const CardOpened = () => {
     const { productID } = useParams();
     const [product, setProduct] = React.useState(null);
+    const basket = useContext(CardContext)
 
     React.useEffect(() => {
         // Fetch the product data based on the productID
@@ -14,6 +16,13 @@ const CardOpened = () => {
 
     if (!product) {
         return <div className="flex justify-center items-center h-screen"><div className="text-xl">Loading...</div></div>;
+    }
+
+    const handleAdd = () => {
+        console.log(basket);
+        basket.setProducts([
+            ...basket.products, product
+        ])
     }
 
     return (
@@ -38,7 +47,9 @@ const CardOpened = () => {
                             </span>
                             <span className="text-gray-700">({product.rating.count} reviews)</span>
                         </div>
-                        <button className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-300">
+                        <button
+                            onClick={handleAdd}
+                            className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition duration-300">
                             Add to Cart
                         </button>
                     </div>
